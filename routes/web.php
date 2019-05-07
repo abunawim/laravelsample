@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('backend/index');
 });
+
+Route::resource('post','PostController');
