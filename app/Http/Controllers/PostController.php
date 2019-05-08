@@ -37,10 +37,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-          $Post = new Post;
-          $Post->posttitle = $request->input('posttitle');
-          $Post->postcontent = $request->input('postcontent');
-          $Post->save();
+        $image = $request->file('fileimage');
+        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images');
+        $image->move($destinationPath, $input['imagename']);
+
+        $Post = new Post;
+
+        $Post->posttitle = $request->input('posttitle');
+        $Post->postcontent = $request->input('postcontent');
+        $Post->fileimage = $input['imagename'];
+        $Post->save();
         
     }
 

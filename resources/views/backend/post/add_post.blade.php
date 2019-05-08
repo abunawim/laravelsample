@@ -16,9 +16,11 @@
                         <div class="form-group"> <label for="exampleInputPassword1">Post Content</label> 
                             <input type="text" class="form-control" id="exampleInputPassword1" name="postcontent"> 
                         </div> 
-                       <!--  <div class="form-group"> <label for="exampleInputFile">File input</label> <input type="file" id="exampleInputFile">  
-                       </div>  -->
-                        
+                       <div class="form-group"> 
+                        <label for="exampleInputFile">File input</label> 
+                        <input type="file" id="exampleInputFile" name="fileimage">  
+                        </div>
+                                             
                         <button type="submit" class="btn btn-default">Submit</button> 
                     {!! Form::close() !!}
                 </div>
