@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+
+     $post = Post::all();
+     return view('backend.post.show_list_post')->with('allPostList',$post);
     }
 
     /**
@@ -50,7 +52,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+       
     }
 
     /**
@@ -59,9 +61,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        
+        $post = Post::find($id);
+        return view('backend.post.edit_post')->with('singleDataEdit',$post);
     }
 
     /**
@@ -71,9 +75,15 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request,  $post)
     {
-        //
+      //$post = new Post;
+      $post = Post::find($post);
+      $post->posttitle = $request->input('posttitle');
+      $post->postcontent = $request->input('postcontent');
+      $post->save();
+        
+       return redirect()->route('post.index');
     }
 
     /**
@@ -82,8 +92,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy( $post)
     {
-        //
+      Post::destroy($post);
+      return redirect()->route('post.index');
     }
 }
