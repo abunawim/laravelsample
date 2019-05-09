@@ -48,6 +48,7 @@ class PostController extends Controller
         $Post->postcontent = $request->input('postcontent');
         $Post->fileimage = $input['imagename'];
         $Post->save();
+        return redirect()->route('post.index');
         
     }
 
