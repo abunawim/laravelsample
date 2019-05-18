@@ -50,8 +50,9 @@
 
                 <div class="form-group"> 
                     <label for="exampleInputFile">Content Image</label> 
-                    <input type="file" id="exampleInputFile" name="fileimage" value="{{ $singleDataEdit->fileimage}}">
+                    <input type="file" id="exampleInputFile" name="fileimage" value="http://localhost/samplelaravel/public/images/1557387828.jpg">
                     <img src="{{ URL::asset('public/images/'.$singleDataEdit->fileimage) }}" width="100px" height="100px" /> 
+                    {!! Form::file('fileimage') !!}
                 </div>
                         
                         <button type="submit" class="btn btn-default">Update</button> 
